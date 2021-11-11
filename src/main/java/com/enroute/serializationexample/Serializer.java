@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Serializer {
 
-    public void serialize(Vehicle vehicle) throws IOException {
+    public void serialize(Object vehicle) throws IOException {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("vehicle.txt");
             ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);

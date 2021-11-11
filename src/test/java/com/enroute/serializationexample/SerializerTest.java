@@ -6,6 +6,7 @@ import com.enroute.vehicles.Vehicle;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.io.NotSerializableException;
 
 import static org.junit.Assert.*;
 
@@ -33,6 +34,16 @@ public class SerializerTest {
 
         //Objects are not equals because the mileage is marked as transient, so it is not persisted.
         assertNotEquals(vehicle, deserializedVehicle);
+    }
+
+    @Test(expected = NotSerializableException.class)
+    public void failSerialization() throws IOException {
+
+        Song song = new Song("Hermano lobo", "Alejandro Filio");
+
+        Serializer serializer = new Serializer();
+
+        serializer.serialize(song);
     }
 
 }
